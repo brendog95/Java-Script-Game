@@ -7,31 +7,31 @@
     <link rel="stylesheet" href="Assets/CSS/CSS.css">
     <title>JavaScript Quiz</title>
 </head>
-<body class="bg-dark">
+<body class="container bg-dark">
 <header class="container">    
     <h1 id="header" class="jumbotron text-center bg-light">JavaScript Quiz!</h1>
-        <h4 class="text-center text-light">Try to answer these Java Script questions as quickly as possible!</h4>
-</header><br>   
+        <h4 class="text-center text-light">Try to answer these Java Script questions as quickly as possible!</h4><br>
+            <h4 class="text-center text-light">Press start to begin the game</h4>
+</header><br>  
+    <div id="questions" class="bg-light">
+        <div id="question-container">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button><br>
+                <button class="btn">Answer 2</button><br>
+                <button class="btn">Answer 3</button><br>
+                <button class="btn">Answer 4</button><br>
+            </div><br>              
+            <div class="controls text-center">
+                <button id="start-btn" class="col-sm-3 start-btn bg-dark text-light center-button btn">Start</button><hr>
+                <button id="next-btn" class="col-sm-3 next-btn bg-dark text-light center-button btn">Next</button>
+            </div><br>
 
-
-        
-        
-        <div id="questions" class="container bg-light">
-            <div id="question-container">
-                <div id="question">Question</div>
-                <div id="answer-buttons" class="btn-grid"></div>
-                    <button class="button btn">Button 1</button><br>
-                    <button class="button btn">Button 2</button><br>
-                    <button class="button btn">Button 3</button><br>
-                    <button class="button btn">Button 4</button><br>               
-                <div class="controls">
-                    <button id="start-btn" class="start-btn bg-dark text-light btn">Start</button><br>
-                    <button id="next-btn" class="next-btn bg-dark text-light btn">Next</button>
-                </div>
-
-            </div>
-                
         </div>
+    </div><br>
+    <div class="mini-jumbotron col-md-2 container bg-light text-center">
+        <span id="countdownTimer">120</span> second<span id="plural">s</span>
+    </div>
 <script src="Assets/JavaScript/JavaScript.js"></script>
 </body>
 </html>

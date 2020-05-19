@@ -7,23 +7,40 @@ const answerButtons = document.getElementById("answer-buttons");
 let shuffledQuestions, currentQuestionIndex;
 
 startButton.addEventListener("click", startGame);
-
+nextButton.addEventListener("click", function(){
+    currentQuestionIndex++;
+    setNextQuestion();
+})
+//starts the game and timer as well as pulling in a new question
 function startGame() {
     console.log("started");
     shuffledQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
-    setNextQuestion(); 
+    setNextQuestion();
+    timer();
 };
 
+function timer() {
+    var seconds = document.getElementById("countdownTimer").textContent;
+    var countdown = setInterval(function(){
+        seconds--;
+        (seconds == 1) ? document.getElementById("plural").textContent = "" : document.getElementById("plural").textContent = "s";
+        document.getElementById("countdown").textContent = seconds;
+        if (seconds <= 0) clearInterval(countdown);
+    },1000);
+};
+
+//pulls a new question randomly and also resets the answer choices
 function setNextQuestion() {
+    resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
 
 };
-
+//shows a question and answers from the array of questions below
 function showQuestion(question) {
     questionElement.innerText = question.question
     question.answers.forEach(answer => {
-    const button = document.createElement("button");
+    const button = document.createElement("button", "br");
     button.innerText = answer.text;
     button.classList.add("btn");
     if(answer.correct) {
@@ -33,9 +50,8 @@ function showQuestion(question) {
     answerButtons.appendChild(button);
     })
 };
-
+//resets the answer choices every time the next question is pulled up.
 function resetState() {
-    nextButton.classList.add("hide");
     while ( answerButtons.firstChild) {
         answerButtons.removeChild;
         (answerButtons.firstChild);
@@ -61,8 +77,7 @@ function setStatusClass(element, correct) {
 
 
 
-}
-
+//Set of questions and answers to be plugged into the html page
 const questions = [
     {
         question: "What do you use to indicate a string in Java Script?",
@@ -98,3 +113,5 @@ const questions = [
         ]
     }
 ]
+
+}
